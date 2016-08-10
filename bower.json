@@ -1,0 +1,17 @@
+{
+  "name": "gmapit",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "martin byrne <marb61a@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/marb61a/gmapit",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
