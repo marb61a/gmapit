@@ -46,4 +46,35 @@ export class AppComponent {
             draggable: false
         }
     ];
+    
+    constructor(){
+        
+    }
+    
+    clickedMarker(marker : marker, index : number){
+        console.log('Clicked marker: '+marker.name+' at index '+index);
+    }
+    
+    mapClicked($event : MouseEvent){
+        var newMarker = {
+            name: "Untitled",
+            lat: $event.coords.lat,
+            lng: $event.coords.lng,
+            draggable: false
+        }
+        
+        this.markers.push(newMarker);
+    }
+    
+    markerDragEnd(marker: any, $event: MouseEvent){
+        
+    }
+}
+
+// The Marker type
+interface marker {
+    name?: string,
+    lat: number,
+    lng: number,
+    draggable: boolean
 }
