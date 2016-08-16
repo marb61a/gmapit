@@ -33,6 +33,35 @@ var AppComponent = (function(){
         this.markers = this._markerService.getMarkers();
     } 
     
+    AppComponent.prototype.clickedMarker = function(marker, index){
+        console.log('Clicked marker: ' + marker.name + ' at index ' + index);    
+    };
+    
+    AppComponent.prototype.mapClicked = function($event){
+        var newMarker = {
+            name: "Untitled",
+            lat: $event.coords.lat,
+            lng: $event.coords.lng,
+            draggable: false    
+        };
+        this.markers.push(newMarker);
+        this._markerService.addMarker(newMarker);
+    };
+    
+    AppComponent.prototype.markerDragEnd = function(marker, $event){
+        console.log('dragEnd', marker, $event);
+        var updMarker = {
+            name: marker.name,
+            lat: parseFloat(marker.lat),
+            lng: parseFloat(marker.lng),
+            draggable: false    
+        };
+        
+        var newLat = $event.coords.lat;
+        var newLng = $event.coords.lng;
+        this._markerService.updateMarker(updMarker, newLat, newLng);
+    };
+    
     AppComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
