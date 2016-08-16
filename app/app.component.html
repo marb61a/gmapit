@@ -36,8 +36,11 @@
                         [longitude]="m.lng"
                         [markerDraggable]="m.draggable"
                         (dragEnd)="markerDragEnd(m, $event)">
+                        
                     <sebm-google-map-info-window>
                         <strong>{{m.name}}</strong>
+                        <br>
+                        <a class="delete" (click)="removeMarker(m)">Delete</a>
                     </sebm-google-map-info-window>    
                     </sebm-google-map-marker>
                 </sebm-google-map>    
@@ -61,6 +64,13 @@
                         
                         <label>Longitude</label>
                         <input type="text" ngControl="lng">
+                        
+                        <label>Draggable</label>
+                        <select ngControl="draggable">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option> 
+                        </select>
+                        <input type="submit" value="Map It!">
                     </form>    
                 </div>
             </div>    
