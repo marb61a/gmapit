@@ -32,7 +32,7 @@ export class AppComponent {
         markerForm: ControlGroup;
         markers: marker[];
     
-    constructor(private _markerService : MarkerService){
+    constructor(private _markerService: MarkerService){
         let fb = new FormBuilder();
         
         this.markerForm = fb.group({
@@ -74,6 +74,38 @@ export class AppComponent {
         var newLng = $event.coords.lng;
         
         this._markerService.updateMarker(updMarker, newLat, newLng);
+    }
+    
+    addMarker(marker: any){
+        if(this.markerForm.valid){
+            if(marker.draggable == 'yes'){
+                var isDraggable = true;
+            } else {
+                var isDraggable = false;
+            }
+            
+            var newMarker = {
+                name: marker.name,
+                lat: parseFloat(marker.lat),
+                lng: parseFloat(marker.lng),
+                draggable: isDraggable
+            }
+            
+            this.markers.push(newMarker);
+            this._markerService.addMarker(newMarker);
+        } else {
+            alert('Please Fill In All Fields');
+        }    
+    }
+    
+    removeMarker(marker:marker){
+        for(var i = 0;i < this.markers.length;i++){
+            if(marker.lat == this.markers[i].lat && marker.lng == this.markers[i].lng){
+                this.markers.splice(i, 1);
+            }
+        }
+        
+        this._markerService.removeMarker(marker);
     }
 }
 
