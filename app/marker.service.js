@@ -31,6 +31,27 @@ var MarkerService = (function(_super){
         return markers;        
     };
     
+    MarkerService.prototype.addMarker = function (marker) {
+        // Fetch Markers
+        var markers = JSON.parse(localStorage.getItem('markers'));
+        // Add new marker to set 
+        markers.push(marker);
+        // Set markers again
+        localStorage.setItem('markers', JSON.stringify(markers));
+    };
+    
+    MarkerService.prototype.updateMarker = function (marker, newLat, newLng) {
+        var markers = JSON.parse(localStorage.getItem('markers'));
+        for (var i = 0; i < markers.length; i++) {
+            if (marker.lat == markers[i].lat && marker.lng == markers[i].lng) {
+                markers[i].lat = newLat;
+                markers[i].lng = newLng;
+            }
+        }
+        // Set new markerset
+        localStorage.setItem('markers', JSON.stringify(markers));
+    };
+    
 } (init_markers_1.Init));
 
 exports.MarkerService = MarkerService;
