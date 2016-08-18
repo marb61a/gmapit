@@ -1,13 +1,10 @@
 "use strict";
-
-var Init = (function(){
-    function Init(){
-        
+var Init = (function () {
+    function Init() {
     }
-    
-    Init.prototype.load = function(){
-        if(localStorage.getItem('markers') === null || localStorage.getItem('markers') === undefined){
-            console.log('Creating markers as none were found');
+    Init.prototype.load = function () {
+        if (localStorage.getItem('markers') === null || localStorage.getItem('markers') === undefined) {
+            console.log('Creating markers as none were found...');
             var markers = [
                 {
                     name: 'Company One',
@@ -28,15 +25,14 @@ var Init = (function(){
                     draggable: false
                 }
             ];
-            localStorage.setItem('markers', JSON.stringify(markers));
+            localStorage.setItem(JSON.stringify(markers));
             return;
-        } else {
-            console.log('Loading markers ...');
-        }    
+        }
+        else {
+            console.log('Loading markers ....');
+        }
     };
-    
     return Init;
-    
-} ());
-
+}());
 exports.Init = Init;
+//# sourceMappingURL=init-markers.js.map
