@@ -24,7 +24,7 @@ export class Init{
                 }    
             ];
             
-            localStorage.setItem(JSON.stringify(markers));
+            localStorage.setItem('markers',JSON.stringify(markers));
             return;
             
         } else {

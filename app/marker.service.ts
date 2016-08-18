@@ -11,13 +11,13 @@ export class MarkerService extends Init {
     }
     
     getMarkers(){
-        var markers = JSON.parse(localStorage.getItem(markers));
+        var markers = JSON.parse(localStorage.getItem('markers'));
         return markers;
     }
     
-    addMarker(){
+    addMarker(marker:any){
         // Fetch markers
-        var markers = JSON.parse(localStorage.getItem(markers));
+        var markers = JSON.parse(localStorage.getItem('markers'));
         // Add a new marker to set
         markers.push(marker);
         // Set markers again
@@ -25,7 +25,7 @@ export class MarkerService extends Init {
     }
     
     updateMarker(marker : any, newLat : number, newLng : number){
-        var markers = JSON.parse(localStorage.getItem(markers));
+        var markers = JSON.parse(localStorage.getItem('markers'));
         
         for(var i = 0; i < markers.length; i++){
             if(marker.lat == markers[i].lat && marker.lng == markers[i].lng){
@@ -40,8 +40,8 @@ export class MarkerService extends Init {
     
     removeMarker(marker : any){
         // Fetch markers
-        var markers = JSON.parse(localStorage.getItem(markers));
-        
+        var markers = JSON.parse(localStorage.getItem('markers'));
+
         for(var i = 0; i < markers.length; i++){
             if(marker.lat == markers[i].lat && marker.lng == markers[i].lng){
                 markers.splice(i, 1);    

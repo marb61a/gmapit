@@ -23,19 +23,19 @@ var MarkerService = (function (_super) {
         this.load();
     }
     MarkerService.prototype.getMarkers = function () {
-        var markers = JSON.parse(localStorage.getItem(markers));
+        var markers = JSON.parse(localStorage.getItem('markers'));
         return markers;
     };
-    MarkerService.prototype.addMarker = function () {
+    MarkerService.prototype.addMarker = function (marker) {
         // Fetch markers
-        var markers = JSON.parse(localStorage.getItem(markers));
+        var markers = JSON.parse(localStorage.getItem('markers'));
         // Add a new marker to set
         markers.push(marker);
         // Set markers again
         localStorage.setItem('markers', JSON.stringify(markers));
     };
     MarkerService.prototype.updateMarker = function (marker, newLat, newLng) {
-        var markers = JSON.parse(localStorage.getItem(markers));
+        var markers = JSON.parse(localStorage.getItem('markers'));
         for (var i = 0; i < markers.length; i++) {
             if (marker.lat == markers[i].lat && marker.lng == markers[i].lng) {
                 markers[i].lat = newLat;
@@ -47,7 +47,7 @@ var MarkerService = (function (_super) {
     };
     MarkerService.prototype.removeMarker = function (marker) {
         // Fetch markers
-        var markers = JSON.parse(localStorage.getItem(markers));
+        var markers = JSON.parse(localStorage.getItem('markers'));
         for (var i = 0; i < markers.length; i++) {
             if (marker.lat == markers[i].lat && marker.lng == markers[i].lng) {
                 markers.splice(i, 1);
